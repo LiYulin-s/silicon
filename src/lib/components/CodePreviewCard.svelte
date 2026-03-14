@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { LANGUAGE_OPTIONS, type HighlightedLine, type SnippetLanguage } from './types';
 	import * as m from '$lib/paraglide/messages.js';
 
@@ -44,6 +44,8 @@
 			lineNumberLayer.style.transform = `translateY(${-textarea.scrollTop}px)`;
 		}
 	}
+
+	let dropdownOpen = $state(false);
 </script>
 
 <article
@@ -70,6 +72,7 @@
 					tabindex="0"
 					class="btn h-7 min-w-36 justify-between gap-2 px-2 font-mono btn-ghost btn-xs"
 					aria-label={m.language_label()}
+					onclick={() => (dropdownOpen = !dropdownOpen)}
 				>
 					<span class="whitespace-nowrap">{languageLabel}</span>
 					<svg
@@ -83,21 +86,27 @@
 						<path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
 					</svg>
 				</button>
-				<ul
-					class="dropdown-content menu menu-vertical z-40 mt-10 max-h-64 w-30 flex-nowrap overflow-x-hidden overflow-y-auto rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
-				>
-					{#each LANGUAGE_OPTIONS as option (option.value)}
-						<li>
-							<button
-								type="button"
-								class:active={language === option.value}
-								onclick={() => onLanguageChange(option.value as SnippetLanguage)}
-							>
-								{option.label}
-							</button>
-						</li>
-					{/each}
-				</ul>
+				{#if dropdownOpen}
+					<ul
+						class="dropdown-content menu menu-vertical z-40 mt-10 max-h-64 w-30 flex-nowrap overflow-x-hidden overflow-y-auto rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
+						transition:slide
+					>
+						{#each LANGUAGE_OPTIONS as option (option.value)}
+							<li>
+								<button
+									type="button"
+									class:active={language === option.value}
+									onclick={() => {
+										onLanguageChange(option.value as SnippetLanguage);
+										dropdownOpen = false;
+									}}
+								>
+									{option.label}
+								</button>
+							</li>
+						{/each}
+					</ul>
+				{/if}
 			</div>
 		</div>
 	</header>
@@ -140,3 +149,19 @@
 		</div>
 	</div>
 </article>
+
+<style>
+	/* 禁用内部交互逻辑 */
+	.dropdown > [tabindex]:first-child {
+		pointer-events: auto !important;
+	}
+
+	.dropdown:focus-within,
+	.dropdown:hover,
+	.dropdown.dropdown-open {
+		.dropdown-content {
+			opacity: 1 !important;
+			scale: 100% !important;
+		}
+	}
+</style>
