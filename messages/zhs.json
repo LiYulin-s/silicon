@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"hello_world": "Hello, {name} from zhs!",
+	"app_title": "代码快照工坊",
+	"app_desc": "使用 DaisyUI 主题词元的现代 Carbon 风格代码卡片。",
+	"filename_label": "文件名",
+	"language_label": "语言",
+	"wrap_lines_label": "自动换行",
+	"theme_label": "主题",
+	"download_png": "下载 PNG",
+	"copy_image": "复制图像",
+	"downloading": "下载中...",
+	"copying": "复制中...",
+	"rendering_png": "正在渲染 PNG...",
+	"downloaded": "PNG 已下载。",
+	"copied": "图像已复制到剪贴板。",
+	"nav_brand": "Silicon 工坊",
+	"nav_tagline": "Tree-sitter 驱动的代码快照卡片",
+	"footer_text": "基于 SvelteKit、DaisyUI 与 Tree-sitter 构建。"
+}

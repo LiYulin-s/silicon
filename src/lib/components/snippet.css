@@ -1,0 +1,51 @@
+.snippet-shell {
+	background:
+		radial-gradient(
+			circle at top right,
+			color-mix(in oklab, var(--color-primary) 12%, transparent),
+			transparent 42%
+		),
+		linear-gradient(
+			135deg,
+			color-mix(in oklab, var(--color-base-200) 90%, black),
+			var(--color-base-100)
+		);
+}
+
+.token-comment {
+	color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+	font-style: italic;
+}
+
+.token-keyword {
+	color: var(--color-error);
+	font-weight: 600;
+}
+
+.token-string {
+	color: var(--color-success);
+}
+
+.token-number {
+	color: var(--color-warning);
+}
+
+.token-function {
+	color: var(--color-info);
+}
+
+.token-property {
+	color: var(--color-secondary);
+}
+
+.token-identifier {
+	color: var(--color-base-content);
+}
+
+.token-operator {
+	color: var(--color-accent);
+}
+
+.token-type {
+	color: var(--color-primary);
+}

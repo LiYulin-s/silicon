@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none" role="img" aria-label="Silicon icon">
+  <defs>
+    <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="36" y1="28" x2="92" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="code" x1="48" y1="44" x2="80" y2="84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bg)"/>
+
+  <rect x="36" y="28" width="56" height="72" rx="12" fill="url(#chip)"/>
+  <rect x="42" y="34" width="44" height="60" rx="8" fill="#0F172A" fill-opacity="0.28"/>
+
+  <rect x="24" y="44" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="24" y="56" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="24" y="68" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="24" y="80" width="8" height="6" rx="2" fill="#38BDF8"/>
+
+  <rect x="96" y="44" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="96" y="56" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="96" y="68" width="8" height="6" rx="2" fill="#38BDF8"/>
+  <rect x="96" y="80" width="8" height="6" rx="2" fill="#38BDF8"/>
+
+  <path d="M58 49L49 58L58 67" stroke="url(#code)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M70 49L79 58L70 67" stroke="url(#code)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M66 44L61 72" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="98" cy="30" r="8" fill="#F59E0B"/>
+  <path d="M98 24V36M92 30H104" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/>
+</svg>
