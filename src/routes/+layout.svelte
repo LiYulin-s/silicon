@@ -22,7 +22,7 @@
 		'retro',
 		'silk',
 		'cupcake',
-		'vscode',
+		'vscode'
 	] as const;
 
 	let currentTheme = $state<(typeof THEMES)[number]>('dark');
@@ -49,7 +49,11 @@
 	}
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<title>{m.app_title()}</title>
+	<meta name="description" content={m.app_desc()} />
+	<link rel="icon" href={favicon} />
+</svelte:head>
 
 <main class="min-h-screen bg-base-200">
 	<nav
@@ -60,6 +64,15 @@
 				<p class="font-mono text-sm tracking-[0.2em] text-primary uppercase">{m.nav_brand()}</p>
 			</div>
 			<div class="navbar-end gap-3">
+				<a
+					href="https://github.com/LiYulin-s/silicon"
+					target="_blank"
+					rel="noreferrer"
+					class="btn btn-ghost btn-sm"
+					aria-label="GitHub repository"
+				>
+					GitHub
+				</a>
 				<div class="dropdown dropdown-end">
 					<button
 						type="button"

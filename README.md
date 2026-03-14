@@ -12,11 +12,14 @@ This project is a code snippet image generator built with SvelteKit and TreeSitt
 - Open source and free to use
 
 ## Usage
-To use Silicon, simply visit the [demo page](https://silicon.iyulin.top) and enter your code snippet. You can customize the appearance using the available themes and settings. Once you're satisfied with the preview, you can download the image or share it directly on social media.
+
+To use Silicon, simply visit the [demo page](https://silicon.yurin.top) and enter your code snippet. You can customize the appearance using the available themes and settings. Once you're satisfied with the preview, you can download the image or share it directly on social media.
 
 ### Parameters
+
 - `code`: The code snippet to be rendered as an image. This can be passed as a query parameter in the URL for pre-filling the input field.
 - `language`: The programming language of the code snippet. This can also be passed as a query parameter to enable syntax highlighting for the specified language.
 
 ## License
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more
