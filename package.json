@@ -16,6 +16,9 @@
 		"test": "bun run test:unit -- --run",
 		"postinstall": "find node_modules -maxdepth 3 -name '*.wasm' -exec cp {} src/lib/assets/ \\;"
 	},
+	"resolutions": {
+		"estree-walker": "2.0.2"
+	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
 		"@eslint/js": "^9.39.2",
