@@ -25,6 +25,10 @@
 		onLanguageChange
 	}: Props = $props();
 
+	let languageLabel = $derived(
+		LANGUAGE_OPTIONS.find((option) => option.value === language)?.label ?? language
+	);
+
 	function syncScroll(event: Event): void {
 		const textarea = event.currentTarget as HTMLTextAreaElement;
 		const editorContainer = textarea.closest('[data-editor-grid]');
@@ -43,10 +47,10 @@
 </script>
 
 <article
-	class="snippet-shell relative overflow-hidden rounded-box border border-base-300 shadow-xl"
+	class="snippet-shell relative isolate overflow-hidden rounded-box border border-base-300 shadow-xl"
 >
 	<header
-		class="flex items-center justify-between border-b border-base-300/70 bg-base-100/40 px-4 py-3 backdrop-blur-md"
+		class="relative z-20 flex items-center justify-between overflow-visible border-b border-base-300/70 bg-base-100/40 px-4 py-3 backdrop-blur-md"
 	>
 		<div class="flex w-24 items-center gap-2">
 			<span class="inline-block h-3 w-3 rounded-full bg-error"></span>
@@ -60,22 +64,46 @@
 				aria-label={m.filename_label()}
 				oninput={(event) => onFileNameChange((event.currentTarget as HTMLInputElement).value)}
 			/>
-			<select
-				class="select h-7 w-32 shrink-0 select-ghost select-xs font-mono"
-				value={language}
-				aria-label={m.language_label()}
-				onchange={(event) =>
-					onLanguageChange((event.currentTarget as HTMLSelectElement).value as SnippetLanguage)}
-			>
-				{#each LANGUAGE_OPTIONS as option (option.value)}
-					<option value={option.value}>{option.label}</option>
-				{/each}
-			</select>
+			<div class="dropdown relative dropdown-end z-30">
+				<button
+					type="button"
+					tabindex="0"
+					class="btn h-7 min-w-36 justify-between gap-2 px-2 font-mono btn-ghost btn-xs"
+					aria-label={m.language_label()}
+				>
+					<span class="whitespace-nowrap">{languageLabel}</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						class="size-3 shrink-0"
+					>
+						<path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+				</button>
+				<ul
+					class="dropdown-content menu menu-vertical z-40 mt-10 max-h-64 w-30 flex-nowrap overflow-x-hidden overflow-y-auto rounded-box border border-base-300 bg-base-100 p-2 shadow-lg"
+				>
+					{#each LANGUAGE_OPTIONS as option (option.value)}
+						<li>
+							<button
+								type="button"
+								class:active={language === option.value}
+								onclick={() => onLanguageChange(option.value as SnippetLanguage)}
+							>
+								{option.label}
+							</button>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	</header>
 
 	<div
-		class="relative grid grid-cols-[auto_1fr] bg-base-100/10 px-0 py-3 backdrop-blur-sm"
+		class="relative z-0 grid grid-cols-[auto_1fr] bg-base-100/10 px-0 py-3 backdrop-blur-sm"
 		data-editor-grid
 	>
 		{#if wrapLines}
